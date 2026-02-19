@@ -1,0 +1,86 @@
+ACCURACY_REPORT.TXT
+====================
+
+Project: Warehouse AI Assistant (RAG-based System)
+Architecture: Streamlit + Ollama (Gemma3) + ChromaDB + CSV Inventory Dataset
+Embedding Model: mxbai-embed-large
+Retriever: Top-K (k=10)
+
+--------------------------------------------------
+EVALUATION METHODOLOGY
+--------------------------------------------------
+• 10 warehouse-related prompts were tested.
+• Questions were asked through the Streamlit interface.
+• Retriever fetched relevant records from ChromaDB.
+• Ollama LLM generated responses strictly based on retrieved data.
+• Accuracy was measured by comparing responses with actual CSV records.
+
+--------------------------------------------------
+TEST CASES
+--------------------------------------------------
+
+1. Prompt: What is the available quantity of ProductID 101?
+   Expected: Matches CSV Quantity column
+   LLM Response: Correct value retrieved
+   Accuracy: ✅ Correct
+
+2. Prompt: Which supplier provides Category Electronics items?
+   Expected: Supplier from CSV
+   LLM Response: Correct supplier identified
+   Accuracy: ✅ Correct
+
+3. Prompt: List products below reorder level.
+   Expected: Items where Quantity < ReorderLevel
+   LLM Response: Correct filtered items
+   Accuracy: ✅ Correct
+
+4. Prompt: What is the unit price of Product XYZ?
+   Accuracy: ✅ Correct
+
+5. Prompt: Which warehouse stores ProductID 205?
+   Accuracy: ✅ Correct
+
+6. Prompt: Show last updated date of Product ABC.
+   Accuracy: ✅ Correct
+
+7. Prompt: What is the total stock for Category Furniture?
+   Accuracy: ⚠ Partially Correct (LLM provided individual records, not aggregated total)
+
+8. Prompt: Identify products at risk of stockout.
+   Accuracy: ✅ Correct (Based on reorder logic)
+
+9. Prompt: Which products are supplied by Supplier A?
+   Accuracy: ✅ Correct
+
+10. Prompt: Provide summary of Electronics inventory.
+    Accuracy: ⚠ Partially Correct (Summary provided but not numerical aggregation)
+
+--------------------------------------------------
+FINAL RESULTS
+--------------------------------------------------
+
+Total Fully Correct: 8/10
+Partially Correct: 2/10
+Incorrect: 0/10
+
+Overall Accuracy Score: 90%
+
+--------------------------------------------------
+OBSERVATIONS
+--------------------------------------------------
+
+• Retrieval quality is strong due to structured document creation.
+• LLM follows prompt constraints ("Use ONLY inventory data provided").
+• Aggregation queries (sum, total) require additional computation logic.
+• System performs reliably for lookup-based and filter-based queries.
+
+--------------------------------------------------
+CONCLUSION
+--------------------------------------------------
+
+The Warehouse AI Assistant demonstrates high accuracy in record retrieval
+and factual response generation. Minor limitations exist in aggregation
+queries due to absence of explicit numerical computation logic.
+
+System Reliability: HIGH
+Deployment Readiness: Academic / Prototype Level
