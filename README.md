@@ -67,8 +67,8 @@ User Query\
     python -m venv venv
     venv\Scripts\activate   # Windows
 
-3️⃣ **Install Dependencies
-**
+3️⃣ **Install Dependencies**
+
     pip install -r requirements.txt
 
 4️⃣ **Start Ollama Model**
@@ -94,8 +94,7 @@ User Query\
 
 ------------------------------------------------------------------------
 
-📊** Example Queries
-**
+📊 **Example Queries**
 -   What is the available quantity of ProductID 101?
 -   Which products are below reorder level?
 -   Who supplies Category Electronics?
@@ -111,7 +110,7 @@ User Query\
 
 ------------------------------------------------------------------------
 
-🎯** Use Cases**
+🎯 **Use Cases**
 
 -   Smart warehouse management
 -   Inventory monitoring
